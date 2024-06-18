@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entertainment Page</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h1>Welcome to Kai's Entertainment Hub</h1>
+        <p>Your one-stop destination for movies, music, and games.</p>
+    </header>
     <nav>
         <ul>
             <li><a href="#movies">Movies</a></li>
@@ -15,23 +20,52 @@
             <li><a href="#feedback">Feedback</a></li>
         </ul>
     </nav>
+
     <section id="movies">
-        <h2>Movie Gallery</h2>
-        <div class="gallery">
-            <img src="images/movie1.jpg" alt="Movie 1">
-            <img src="images/movie2.jpg" alt="Movie 2">
-            <img src="images/movie3.jpg" alt="Movie 3">
+        <h2>Video Gallery</h2>
+        <div class="video-gallery">
+            <video controls>
+                <source src="fire.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="fred.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="Ltt.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="OnlineGamer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
-    <section id="music">
-        <h2>Music Section</h2>
-        <button class="cta-button">Listen Here</button>
+
+   <section id="music">
+        <h2>Music Player</h2>
+        <div class="music-player">
+            <audio controls id="audio-player">
+                <source src="Lullaby.m4a" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="playlist">
+                <ul>
+                    <li data-src="Lullaby.m4a">Lullaby</li>
+                    <li data-src="Good Life.mp3">Good Life</li>
+                    <li data-src="Somebody_Else.mp3">Sombody Else</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section id="games">
         <h2>Games Section</h2>
         <button class="cta-button">Play Game</button>
+        at this time games are closed
     </section>
+
     <section id="feedback">
         <h2>Feedback</h2>
         <form>
@@ -42,5 +76,25 @@
             <button type="submit">Submit</button>
         </form>
     </section>
+    <footer>
+        <p>&copy; 2024 Entertainment Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const audioPlayer = document.getElementById('audio-player');
+            const playlistItems = document.querySelectorAll('.playlist ul li');
+
+            playlistItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const src = this.getAttribute('data-src');
+                    audioPlayer.src = src;
+                    audioPlayer.play();
+                    playlistItems.forEach(i => i.classList.remove('playing'));
+                    this.classList.add('playing');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
